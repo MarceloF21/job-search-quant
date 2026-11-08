@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "job-search-quant"
-version = "3.0.0"
-description = "A quant-style platform for a student's job search: postings priced by effective wage and combined like a portfolio, applications analysed with Bayesian rates and Monte Carlo."
+version = "3.1.0"
+description = "Quant-style analysis of a student job search in Toronto: official Job Bank open data, effective-wage pricing, portfolio choice, Bayesian success rates and Monte Carlo."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{ name = "Marcelo Farez" }]

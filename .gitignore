@@ -7,5 +7,5 @@ dist/
 .pytest_cache/
 .ruff_cache/
 # Your real journal and fetched postings stay private and local
-data/
+/data/
 output/
