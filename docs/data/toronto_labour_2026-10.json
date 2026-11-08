@@ -1,0 +1,178 @@
+{
+  "title": "Toronto labour market \u2013 Job Bank postings first published in Oct 2026",
+  "source": "Source: Employment and Social Development Canada, \"Job Postings Advertised on Canada's National Job Bank Website\" (open.canada.ca). Contains information licensed under the Open Government Licence \u2013 Canada.",
+  "postings": 3168,
+  "vacancies": 3894,
+  "with_pay": 3141,
+  "hourly_quartiles": [
+    20.85,
+    26.951346153846156,
+    38.0
+  ],
+  "benchmark_shares": {
+    "Ontario minimum wage": 0.9579751671442216,
+    "GTA living wage": 0.4906080865966253
+  },
+  "part_time": {
+    "median": 22.189999999999998,
+    "n": 557
+  },
+  "full_time": {
+    "median": 28.557692307692307,
+    "n": 2531
+  },
+  "entry_level": {
+    "n": 322,
+    "median": 21.0,
+    "schedule_shares": {
+      "evening": 0.4472049689440994,
+      "weekend": 0.2608695652173913,
+      "night": 0.09937888198757763,
+      "on_call": 0.06521739130434782
+    }
+  },
+  "teer_medians": {
+    "TEER 0 Management": {
+      "median": 37.75,
+      "n": 262
+    },
+    "TEER 1 University degree": {
+      "median": 45.01022836538462,
+      "n": 590
+    },
+    "TEER 2 College / apprenticeship (2+ yrs)": {
+      "median": 36.0,
+      "n": 703
+    },
+    "TEER 3 College (<2 yrs) / some training": {
+      "median": 26.5,
+      "n": 474
+    },
+    "TEER 4 High school": {
+      "median": 21.0,
+      "n": 731
+    },
+    "TEER 5 No formal education": {
+      "median": 20.0,
+      "n": 366
+    }
+  },
+  "category_medians": {
+    "Art, culture, recreation & sport": {
+      "median": 36.13782051282051,
+      "n": 52
+    },
+    "Business, finance & administration": {
+      "median": 30.073076923076922,
+      "n": 525
+    },
+    "Education, law, social & government": {
+      "median": 21.0,
+      "n": 430
+    },
+    "Health": {
+      "median": 41.25,
+      "n": 232
+    },
+    "Legislative & senior management": {
+      "median": 64.29413461538462,
+      "n": 10
+    },
+    "Manufacturing & utilities": {
+      "median": 23.0,
+      "n": 72
+    },
+    "Natural & applied sciences": {
+      "median": 42.03957100591716,
+      "n": 382
+    },
+    "Natural resources & agriculture": {
+      "median": 35.0,
+      "n": 14
+    },
+    "Sales & service": {
+      "median": 22.0,
+      "n": 967
+    },
+    "Trades & transport": {
+      "median": 35.445,
+      "n": 442
+    }
+  },
+  "minimum_wage_bunching": [
+    {
+      "label": "Sep 2026",
+      "hourly_postings": 2378,
+      "at_old": 207,
+      "at_new": 53,
+      "below_new": 252
+    },
+    {
+      "label": "Oct 2026",
+      "hourly_postings": 2396,
+      "at_old": 62,
+      "at_new": 200,
+      "below_new": 86
+    }
+  ],
+  "commute_tax": {
+    "wage": 21.0,
+    "shift_hours": [
+      3,
+      4,
+      5,
+      6,
+      8
+    ],
+    "commute_minutes_one_way": [
+      15,
+      30,
+      45,
+      60,
+      75,
+      90
+    ],
+    "effective_wage": [
+      [
+        18.0,
+        15.75,
+        14.0,
+        12.6,
+        11.454545454545455,
+        10.5
+      ],
+      [
+        18.666666666666668,
+        16.8,
+        15.272727272727273,
+        14.0,
+        12.923076923076923,
+        12.0
+      ],
+      [
+        19.09090909090909,
+        17.5,
+        16.153846153846153,
+        15.0,
+        14.0,
+        13.125
+      ],
+      [
+        19.384615384615383,
+        18.0,
+        16.8,
+        15.75,
+        14.823529411764707,
+        14.0
+      ],
+      [
+        19.764705882352942,
+        18.666666666666668,
+        17.68421052631579,
+        16.8,
+        16.0,
+        15.272727272727273
+      ]
+    ]
+  }
+}

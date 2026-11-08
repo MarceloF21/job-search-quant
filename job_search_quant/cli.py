@@ -12,6 +12,18 @@ from .benchmarks import DEFAULT_BENCHMARKS
 from .db import load_postings, save_postings
 from .economics import evaluate_all
 from .journal import funnel, load_journal
+from .labour import (
+    commute_tax,
+    fetch_month,
+    in_city,
+    minimum_wage_bunching,
+    month_label,
+    summarize,
+)
+from .labour import (
+    load_postings as load_jobbank,
+)
+from .labour_report import COMMUTE_MINUTES, SHIFT_HOURS, write_labour_outputs
 from .market import market_summary
 from .match import keyword_match
 from .models import Assumptions, Profile
@@ -52,6 +64,13 @@ def main(argv: list[str] | None = None) -> int:
     search.add_argument("--window", type=int, default=21, help="days of silence that count as no response")
     search.add_argument("--target", type=float, default=0.8, help="target probability of at least one offer")
     search.add_argument("--out", default="output")
+
+    labour = sub.add_parser("labour", help="Toronto labour market from Job Bank open data (about 50 MB per month)")
+    labour.add_argument("--months", nargs="+", default=["2026-09", "2026-10"],
+                        help="months to analyse as YYYY-MM; the last one is the main month")
+    labour.add_argument("--data-dir", default="data/jobbank")
+    labour.add_argument("--files", nargs="+", help="local monthly CSVs named YYYY-MM.csv instead of downloading")
+    labour.add_argument("--out", default="output")
 
     match = sub.add_parser("match", help="compare a résumé with a posting's keywords")
     match.add_argument("--resume", required=True, help="plain-text résumé")
@@ -97,6 +116,11 @@ def main(argv: list[str] | None = None) -> int:
         run_search(EXAMPLES / "sample_applications.csv", date.fromisoformat(SAMPLE_DATE), 21, 0.8, out,
                    "FICTIONAL demo journal")
         return 0
+    if args.command == "labour":
+        paths = [Path(f) for f in args.files] if args.files else [
+            fetch_month(int(m[:4]), int(m[5:7]), args.data_dir) for m in args.months]
+        run_labour(paths, Path(args.out))
+        return 0
     if args.command == "market":
         run_market(load_postings(args.db), Path(args.profile), args.objective, args.risk_aversion, Path(args.out),
                    f"{args.db}")
@@ -121,6 +145,23 @@ def run_market(postings, profile_path: Path, objective: str, risk_aversion: floa
     print(f"\nBest combination: {result.best.label} — expected ${result.best.expected_pay:,.2f}/week "
           f"(± ${result.best.pay_std:,.2f}), {result.best.total_time:.1f} h/week including commuting")
     print(f"Market outputs: {paths['market.md']}")
+
+
+SOURCE_NOTE = ("Source: Employment and Social Development Canada, \"Job Postings Advertised on Canada's National "
+               "Job Bank Website\" (open.canada.ca). Contains information licensed under the Open Government "
+               "Licence – Canada.")
+
+
+def run_labour(paths: list[Path], out: Path) -> None:
+    months = [(month_label(p), in_city(load_jobbank(p))) for p in sorted(paths)]
+    latest_label, latest_rows = months[-1]
+    summary = summarize(latest_rows, DEFAULT_BENCHMARKS, latest_label)
+    bunching = [minimum_wage_bunching(rows, label) for label, rows in months]
+    base = summary.entry_level_median or summary.median or 0.0
+    grid = commute_tax(base, SHIFT_HOURS, COMMUTE_MINUTES)
+    title = f"Toronto labour market – Job Bank postings first published in {latest_label}"
+    paths_out = write_labour_outputs(summary, bunching, grid, DEFAULT_BENCHMARKS, out, title, SOURCE_NOTE)
+    print(paths_out["labour.md"].read_text(encoding="utf-8"))
 
 
 def run_search(journal_path: Path, today: date, window: int, target: float, out: Path, label: str) -> None:
