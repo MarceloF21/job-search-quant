@@ -25,4 +25,4 @@ jobs:
       - name: Test
         run: pytest
       - name: Offline demo
-        run: python -m quant_trading_platform demo --out output/demo --no-ml
+        run: python -m job_search_quant demo --out output/demo

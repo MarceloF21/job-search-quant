@@ -6,6 +6,6 @@ dist/
 .venv/
 .pytest_cache/
 .ruff_cache/
-# Downloaded market data and generated outputs stay local
-data/*.db
+# Your real journal and fetched postings stay private and local
+data/
 output/
