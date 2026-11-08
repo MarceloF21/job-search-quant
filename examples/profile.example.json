@@ -1,0 +1,27 @@
+{
+  "name": "Sample economics student (fictional)",
+  "weekly_hour_budget": 45,
+  "primary_job_hours": 20,
+  "available": [
+    "day",
+    "evening",
+    "weekend",
+    "holiday"
+  ],
+  "certifications": [
+    "whmis",
+    "first_aid"
+  ],
+  "languages": [
+    "english",
+    "spanish"
+  ],
+  "can_drive": false,
+  "experience_months": 0,
+  "reservation_wage": 17.95,
+  "default_commute_minutes": 40,
+  "max_commute_minutes": 75,
+  "max_jobs": 2,
+  "horizon_weeks": 20,
+  "excluded_employers": []
+}
